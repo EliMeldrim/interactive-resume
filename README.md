@@ -37,10 +37,9 @@ npm run preview   # serve the production build locally
 
 ## Screenshots
 
-<!-- screenshot: hero + skills explorer -->
-<!-- screenshot: skills explorer with skills selected, timeline highlighting matches -->
-<!-- screenshot: projects grid -->
-<!-- screenshot: print preview (collapsed one-page resume) -->
+![Full light](docs/screenshots/full-light.png)
+
+![Hero skills dark](docs/screenshots/hero-skills-dark.png)
 
 ## Project structure
 
