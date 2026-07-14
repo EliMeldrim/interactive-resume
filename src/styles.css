@@ -1,0 +1,845 @@
+/* ==========================================================================
+   Interactive Resume — global styles
+   Light/dark themes via prefers-color-scheme; print styles at the bottom.
+   ========================================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-2: #eef0f7;
+  --border: #dcdfe8;
+  --text: #1c2130;
+  --text-muted: #5b6377;
+  --accent: #4756e0;
+  --accent-soft: #e4e7ff;
+  --accent-contrast: #ffffff;
+  --match-ring: rgba(71, 86, 224, 0.55);
+  --edu: #0e8f6e;
+  --edu-soft: #dcf3ec;
+  --work: #4756e0;
+  --work-soft: #e4e7ff;
+  --award: #a06a00;
+  --award-soft: #fdf0d3;
+  --shadow: 0 1px 3px rgba(20, 24, 40, 0.07), 0 8px 24px rgba(20, 24, 40, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12141c;
+    --surface: #1b1e2a;
+    --surface-2: #232736;
+    --border: #323749;
+    --text: #e8eaf2;
+    --text-muted: #9aa1b5;
+    --accent: #8b96ff;
+    --accent-soft: #2c3160;
+    --accent-contrast: #10122b;
+    --match-ring: rgba(139, 150, 255, 0.6);
+    --edu: #4ecCa8;
+    --edu-soft: #143529;
+    --work: #8b96ff;
+    --work-soft: #2c3160;
+    --award: #ffd479;
+    --award-soft: #3a2f12;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+code {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.05em 0.35em;
+  font-size: 0.9em;
+}
+
+.page {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0 1.25rem 3rem;
+}
+
+/* --------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+
+.hero {
+  padding: 3.5rem 0 1rem;
+}
+
+.hero-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.hero-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0.35rem 0 0.15rem;
+}
+
+.hero-meta {
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+
+.hero-summary {
+  max-width: 62rem;
+  font-size: 1.02rem;
+  color: var(--text);
+  margin: 0;
+}
+
+.hero-hint {
+  margin-top: 1rem;
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.92rem;
+}
+
+/* --------------------------------------------------------------------------
+   Sections
+   -------------------------------------------------------------------------- */
+
+.section {
+  margin-top: 3rem;
+}
+
+.section-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.25rem;
+  margin-bottom: 1.1rem;
+}
+
+.section-heading h2 {
+  font-size: 1.5rem;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.section-sub {
+  color: var(--text-muted);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   Skills explorer
+   -------------------------------------------------------------------------- */
+
+.skills-explorer {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.4rem 1.5rem 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.explorer-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  padding: 0.6rem 0.75rem;
+  background: var(--surface-2);
+  border-radius: 10px;
+  margin-bottom: 1.25rem;
+}
+
+.match-mode {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.match-mode-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-right: 0.15rem;
+}
+
+.mode-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.mode-btn--active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 600;
+}
+
+.explorer-status {
+  font-size: 0.9rem;
+  color: var(--text);
+  flex: 1;
+  min-width: 12rem;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.clear-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.clear-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.clear-btn:not(:disabled):hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.skill-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.1rem 1.75rem;
+}
+
+.skill-group h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin: 0 0 0.5rem;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* --------------------------------------------------------------------------
+   Skill chips
+   -------------------------------------------------------------------------- */
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.28rem 0.75rem;
+  font-size: 0.86rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease,
+    transform 0.05s ease;
+}
+
+.skill-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.skill-chip:active {
+  transform: scale(0.97);
+}
+
+.skill-chip--selected,
+.skill-chip--selected:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 600;
+}
+
+.skill-chip-count {
+  font-size: 0.72rem;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 0 0.42rem;
+  line-height: 1.4;
+}
+
+.skill-chip--selected .skill-chip-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: inherit;
+}
+
+.skill-chip--compact {
+  padding: 0.14rem 0.6rem;
+  font-size: 0.78rem;
+  background: var(--surface-2);
+}
+
+.skill-chip--compact.skill-chip--selected {
+  background: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   Timeline
+   -------------------------------------------------------------------------- */
+
+.filter-tabs {
+  display: flex;
+  gap: 0.35rem;
+  margin-left: auto;
+}
+
+.tab {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 0.28rem 0.95rem;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.tab--active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 600;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.6rem;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.45rem;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.4rem;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -1.6rem;
+  top: 1.25rem;
+  width: 0.95rem;
+  height: 0.95rem;
+  border-radius: 50%;
+  border: 3px solid var(--bg);
+  background: var(--work);
+}
+
+.timeline-item--education .timeline-marker {
+  background: var(--edu);
+}
+
+/* --------------------------------------------------------------------------
+   Cards (shared)
+   -------------------------------------------------------------------------- */
+
+.timeline-card,
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem 1.3rem;
+  box-shadow: var(--shadow);
+  transition: opacity 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card--match {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--match-ring), var(--shadow);
+}
+
+.card--dimmed {
+  opacity: 0.35;
+}
+
+.card-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.35rem 1rem;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.08rem;
+}
+
+.card-org {
+  margin: 0.15rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.card-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.card-period {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.type-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 6px;
+  padding: 0.14rem 0.5rem;
+}
+
+.type-badge--work {
+  background: var(--work-soft);
+  color: var(--work);
+}
+
+.type-badge--education {
+  background: var(--edu-soft);
+  color: var(--edu);
+}
+
+.card-summary {
+  margin: 0.6rem 0 0;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.card-highlights {
+  margin: 0.6rem 0 0;
+  padding-left: 1.15rem;
+}
+
+.card-highlights li {
+  margin-bottom: 0.35rem;
+  font-size: 0.94rem;
+}
+
+.chip-row--card {
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px dashed var(--border);
+}
+
+/* --------------------------------------------------------------------------
+   Projects
+   -------------------------------------------------------------------------- */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 1.1rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-tagline {
+  margin: 0.35rem 0 0;
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 0.92rem;
+}
+
+.project-description {
+  margin: 0.5rem 0 0;
+  font-size: 0.93rem;
+  flex: 1;
+}
+
+.project-note {
+  margin: 0.5rem 0 0;
+  font-size: 0.83rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.project-link {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+}
+
+/* --------------------------------------------------------------------------
+   Publications
+   -------------------------------------------------------------------------- */
+
+.pub-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.pub-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.95rem 1.2rem;
+  box-shadow: var(--shadow);
+}
+
+.pub-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.kind-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 6px;
+  padding: 0.14rem 0.5rem;
+  background: var(--surface-2);
+  color: var(--text-muted);
+}
+
+.kind-badge--journal {
+  background: var(--work-soft);
+  color: var(--work);
+}
+
+.kind-badge--patent {
+  background: var(--award-soft);
+  color: var(--award);
+}
+
+.kind-badge--talk,
+.kind-badge--workshop {
+  background: var(--edu-soft);
+  color: var(--edu);
+}
+
+.award-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 0.14rem 0.5rem;
+  background: var(--award-soft);
+  color: var(--award);
+}
+
+.pub-title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.97rem;
+}
+
+.pub-venue {
+  margin: 0.25rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.pub-status {
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  margin-top: 3.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.print-button {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.4rem 1rem;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.print-button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   Small screens
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 2.25rem;
+  }
+
+  .filter-tabs {
+    margin-left: 0;
+  }
+
+  .card-header-right {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* ==========================================================================
+   Print — collapse into a clean, compact resume
+   ========================================================================== */
+
+@media print {
+  :root {
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #ffffff;
+    --border: #bbbbbb;
+    --text: #000000;
+    --text-muted: #444444;
+    --accent: #000000;
+    --shadow: none;
+  }
+
+  body {
+    font-size: 10.5pt;
+    background: #ffffff;
+  }
+
+  .page {
+    max-width: none;
+    padding: 0;
+  }
+
+  /* Hide interactive chrome */
+  .skills-explorer .explorer-toolbar,
+  .hero-hint,
+  .hero-kicker,
+  .filter-tabs,
+  .print-button,
+  .skill-chip-count,
+  .chip-row--card,
+  .site-footer {
+    display: none !important;
+  }
+
+  .hero {
+    padding: 0 0 0.5rem;
+  }
+
+  .hero h1 {
+    font-size: 20pt;
+  }
+
+  .hero-summary {
+    font-size: 10pt;
+  }
+
+  .section {
+    margin-top: 0.9rem;
+  }
+
+  .section-heading {
+    margin-bottom: 0.4rem;
+    border-bottom: 1.5pt solid #000;
+  }
+
+  .section-heading h2 {
+    font-size: 12.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .section-sub {
+    display: none;
+  }
+
+  .skills-explorer {
+    border: none;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .skill-groups {
+    display: block;
+    columns: 2;
+    column-gap: 2rem;
+  }
+
+  .skill-group {
+    break-inside: avoid;
+    margin-bottom: 0.4rem;
+  }
+
+  .skill-group h3 {
+    margin-bottom: 0.15rem;
+  }
+
+  /* Chips become plain comma-ish text */
+  .chip-row {
+    gap: 0.25rem;
+  }
+
+  .skill-chip {
+    border: none;
+    background: none !important;
+    color: #000 !important;
+    padding: 0;
+    font-size: 9.5pt;
+    font-weight: 400 !important;
+  }
+
+  .skill-chip:not(:last-child) span::after {
+    content: ' ·';
+  }
+
+  .timeline {
+    padding-left: 0;
+  }
+
+  .timeline::before,
+  .timeline-marker {
+    display: none;
+  }
+
+  .timeline-item {
+    margin-bottom: 0.55rem;
+    break-inside: avoid;
+  }
+
+  .timeline-card,
+  .project-card,
+  .pub-item {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none !important;
+    opacity: 1 !important;
+  }
+
+  .card--match {
+    box-shadow: none !important;
+  }
+
+  .type-badge {
+    display: none;
+  }
+
+  .card-highlights {
+    margin-top: 0.2rem;
+  }
+
+  .card-highlights li {
+    font-size: 9.5pt;
+    margin-bottom: 0.12rem;
+  }
+
+  .projects-grid {
+    display: block;
+  }
+
+  .project-card {
+    margin-bottom: 0.55rem;
+    break-inside: avoid;
+  }
+
+  .project-description,
+  .pub-venue {
+    font-size: 9.5pt;
+  }
+
+  .pub-list {
+    display: block;
+  }
+
+  .pub-item {
+    margin-bottom: 0.45rem;
+    break-inside: avoid;
+  }
+
+  .pub-title {
+    font-size: 10pt;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
